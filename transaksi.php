@@ -81,16 +81,14 @@
       <table id="example" class="display table table-bordered container">
         <thead class="thead-inverse">
           <tr>
-              <th>Kode Barang</th>
-              <th>Nama Barang</th>
-              <th>Harga Modal</th>
-              <th>Harga Jual Minimum</th>
-              <th>Pemasok</th>
-              <th>Stok</th>
+              <th>Tanggal</th>
+              <th>Kode</th>
+              <th>Harga Jual</th>
+              <th>Jumlah</th>
             </tr>
         </thead>
         <?php
-          $query = "SELECT b.kode, b.nama, b.modal, b.harga_minimum, b.stok, b.pemasok FROM gallery.barang b";
+          $query = "SELECT t.tanggal, t.kode, t.harga_jual, t.jumlah FROM gallery.transaksi t";
               
           $result = $conn->query($query);
 
@@ -112,12 +110,10 @@
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
               echo "<tr>";
+              echo "<td>".$row["tanggal"]."</td>";
               echo "<td>".$row["kode"]."</td>";
-              echo "<td>".$row["nama"]."</td>";
-              echo "<td>".$row["modal"]."</td>";
-              echo "<td>".$row["harga_minimum"]."</td>";
-              echo "<td>".$row["pemasok"]."</td>";
-              echo "<td>".$row["stok"]."</td>";
+              echo "<td>".$row["harga_jual"]."</td>";
+              echo "<td>".$row["jumlah"]."</td>";
               echo "</tr>";
             }
           } else {
@@ -139,7 +135,7 @@
 
     <!-- DataTables JS -->
     <script src="js/intangallery.js"></script>
-    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.dataTables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 
     <!-- Theme JavaScript -->
     <script src="js/grayscale.min.js"></script>
