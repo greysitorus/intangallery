@@ -1,0 +1,10 @@
+Role: Boss, Karyawan, Admin
+
+Boss: Semua fitur
+Karyawan: Lihat detail barang
+Admin: CRUD detail barang, Lihat detail barang, CRUD transaksi
+
+Database Architecture
+User: Username, Nama, Role
+Detail Barang: Kode, Nama, Modal, Harga Minimum, Stok, Pemasok
+Transaksi: Tanggal, Kode Barang, Harga Jual, Jumlah (trigger mengubah stok)
