@@ -27,8 +27,6 @@
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/intangallery.css" rel="stylesheet">
-
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
 
@@ -39,6 +37,7 @@
 
     <!-- Theme CSS -->
     <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/utama.css" rel="stylesheet">
   </head>
 
   <body>
@@ -62,11 +61,11 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <button class="btn btn-dropdown dropdown-toggle" type="button" data-toggle="dropdown">Hello, <?php echo $username ?>  <span class="caret"></span></button>
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Hello, <?php echo $username ?>  <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                           <li><a href="barang.php">Lihat Detail Barang</a></li>
                           <li><a href="transaksi.php">Edit Transaksi</a></li>
-                          <li><a href=""></a></li>
+                          <li><a href="statistik.php">Lihat Statistik</a></li>
                           <li><a href="logout.php">Logout</a></li>
                         </ul>
                     </li>
@@ -121,11 +120,39 @@
               echo "</tr>";
             }
           } else {
-            echo "0 results";
+            echo "Belum ada data";
           }
           $conn->close();
         ?>
       </table>
+    </div>
+
+    <div class="container tambah">
+      <button class="btn-default btn-lg" data-toggle="modal" data-target="#modal-tambah">Tambah Barang</button>
+    </div>
+
+    <div class="modal fade" id="modal-tambah" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Tambahkan Item</h4>
+          </div>
+          <div class="modal-body text-center">
+            <form>
+              <input id="inputkodebarang" name="inputkodebarang" class="form-control" placeholder="Masukkan Kode Barang" size="40" /><br>
+              <input id="inputnamabarang" name="inputnamabarang" class="form-control" placeholder="Masukkan Nama Barang" size="40" /><br>
+              <input id="inputmodal" name="inputmodal" class="form-control" placeholder="Masukkan Harga Modal" size="40" /><br>
+              <input id="inputhargamin" name="inputhargamin" class="form-control" placeholder="Masukkan Harga Jual Minimum" size="40" /><br>
+              <input id="inputpemasok" name="inputpemasok" class="form-control" placeholder="Masukkan Nama Pemasok" size="40" /><br>
+              <input id="inputstok" name="inputstok" class="form-control" placeholder="Masukkan Jumlah Stok" size="40" /><br>
+              <input type="submit" class="btn-primary" value="OK!">
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- jQuery -->

@@ -27,8 +27,6 @@
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/intangallery.css" rel="stylesheet">
-
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
 
@@ -39,6 +37,7 @@
 
     <!-- Theme CSS -->
     <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/utama.css" rel="stylesheet">
   </head>
 
   <body>
@@ -66,7 +65,7 @@
                         <ul class="dropdown-menu">
                           <li><a href="barang.php">Lihat Detail Barang</a></li>
                           <li><a href="transaksi.php">Edit Transaksi</a></li>
-                          <li><a href=""></a></li>
+                          <li><a href="statistik.php">Lihat Statistik</a></li>
                           <li><a href="logout.php">Logout</a></li>
                         </ul>
                     </li>
@@ -92,21 +91,6 @@
               
           $result = $conn->query($query);
 
-          /* if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-              for ($i = 0; $i < count($row); $i++) {
-                echo "<tr>";
-                echo "<td>".$row[$i]["kode"]."</td>";
-                echo "<td>".$row[$i]["nama"]."</td>";
-                echo "<td>".$row[$i]["modal"]."</td>";
-                echo "<td>".$row[$i]["harga_minimum"]."</td>";
-                echo "<td>".$row[$i]["stok"]."</td>";
-                echo "<td>".$row[$i]["pemasok"]."</td>";
-                echo "</tr>";
-              }
-            }
-          } */
-
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
               echo "<tr>";
@@ -122,6 +106,32 @@
           $conn->close();
         ?>
       </table>
+    </div>
+
+    <div class="container tambah">
+      <button class="btn-default btn-lg" data-toggle="modal" data-target="#modal-tambah">Tambah Barang</button>
+    </div>
+
+    <div class="modal fade" id="modal-tambah" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Buat Transaksi Baru</h4>
+          </div>
+          <div class="modal-body text-center">
+            <form>
+              <input id="inputtanggal" name="inputtanggal" class="form-control" placeholder="Masukkan Tanggal Transaksi" size="40" /><br>
+              <input id="inputkodebarang" name="inputkodebarang" class="form-control" placeholder="Masukkan Kode Barang" size="40" /><br>
+              <input id="inputhargajual" name="inputhargajual" class="form-control" placeholder="Masukkan Harga Jual" size="40" /><br>
+              <input id="inputjumlah" name="inputjumlah" class="form-control" placeholder="Masukkan Jumlah Item" size="40" /><br>
+              <input type="submit" class="btn-primary" value="OK!">
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- jQuery -->
