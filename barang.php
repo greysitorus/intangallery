@@ -86,27 +86,12 @@
               <th>Harga Jual Minimum</th>
               <th>Pemasok</th>
               <th>Stok</th>
+              <th>Edit</th>
             </tr>
         </thead>
         <?php
           $query = "SELECT b.kode, b.nama, b.modal, b.harga_minimum, b.stok, b.pemasok FROM gallery.barang b";
-              
           $result = $conn->query($query);
-
-          /* if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-              for ($i = 0; $i < count($row); $i++) {
-                echo "<tr>";
-                echo "<td>".$row[$i]["kode"]."</td>";
-                echo "<td>".$row[$i]["nama"]."</td>";
-                echo "<td>".$row[$i]["modal"]."</td>";
-                echo "<td>".$row[$i]["harga_minimum"]."</td>";
-                echo "<td>".$row[$i]["stok"]."</td>";
-                echo "<td>".$row[$i]["pemasok"]."</td>";
-                echo "</tr>";
-              }
-            }
-          } */
 
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -116,8 +101,14 @@
               echo "<td>".$row["modal"]."</td>";
               echo "<td>".$row["harga_minimum"]."</td>";
               echo "<td>".$row["pemasok"]."</td>";
-              echo "<td>".$row["stok"]."</td>";
-              echo "</tr>";
+              echo "<td>".$row["stok"]."</td>"; ?>
+              <td class="row-edit">
+                <form action='delete.php?kode=<?php echo $row['kode']; ?>' method="post">
+                  <input type="hidden" name="kode" value="<?php echo $row['kode']; ?>">
+                  <input type="submit" name="delete" value="x">
+                </form>
+              </td>
+        <?php
             }
           } else {
             echo "Belum ada data";
