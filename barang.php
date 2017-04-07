@@ -6,7 +6,7 @@
 
   $username = $user_id = $title = $date = $content = $fullname = $comment = $user = '';
   
-  if(isset($_SESSION["userlogin"])){
+  if(isset($_SESSION['userlogin'])) {
     $username = $_SESSION['userlogin'];
   } else {
     header("Location: login.php");
@@ -110,8 +110,6 @@
               </td>
         <?php
             }
-          } else {
-            echo "Belum ada data";
           }
           $conn->close();
         ?>
@@ -131,13 +129,13 @@
             <h4 class="modal-title">Tambahkan Item</h4>
           </div>
           <div class="modal-body text-center">
-            <form>
-              <input id="inputkodebarang" name="inputkodebarang" class="form-control" placeholder="Masukkan Kode Barang" size="40" /><br>
-              <input id="inputnamabarang" name="inputnamabarang" class="form-control" placeholder="Masukkan Nama Barang" size="40" /><br>
-              <input id="inputmodal" name="inputmodal" class="form-control" placeholder="Masukkan Harga Modal" size="40" /><br>
-              <input id="inputhargamin" name="inputhargamin" class="form-control" placeholder="Masukkan Harga Jual Minimum" size="40" /><br>
-              <input id="inputpemasok" name="inputpemasok" class="form-control" placeholder="Masukkan Nama Pemasok" size="40" /><br>
-              <input id="inputstok" name="inputstok" class="form-control" placeholder="Masukkan Jumlah Stok" size="40" /><br>
+            <form method="POST" action="tambahBarang.php">
+              <input type="text" name="kodebarang" class="form-control" placeholder="Masukkan Kode Barang" size="40" /><br>
+              <input type="text" name="namabarang" class="form-control" placeholder="Masukkan Nama Barang" size="40" /><br>
+              <input type="number" name="modal" class="form-control" placeholder="Masukkan Harga Modal" size="40" /><br>
+              <input type="number" name="hargamin" class="form-control" placeholder="Masukkan Harga Jual Minimum" size="40" /><br>
+              <input type="text" name="pemasok" class="form-control" placeholder="Masukkan Nama Pemasok" size="40" /><br>
+              <input type="number" name="stok" class="form-control" placeholder="Masukkan Jumlah Stok" size="40" /><br>
               <input type="submit" class="btn-primary" value="OK!">
               <div class="clearfix"></div>
             </form>

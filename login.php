@@ -4,14 +4,14 @@
 	require "database.php";
 	$conn = connectDB();
 	if(isset($_POST['username'])){
-		if(login($_POST['username'], $_POST['password'])){
+		if(login($_POST['username'], $_POST['password'])) {
 			session_start();
 			$_SESSION["userlogin"] = $_POST['username'];
 			header("Location: index.php");
 		}
 	}
 	
-	function login($username, $password){
+	function login($username, $password) {
 		$conn = connectDB();
 		
 		$sql = "SELECT username, password FROM user WHERE username='$username' AND password='$password'";
